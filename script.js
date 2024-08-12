@@ -86,3 +86,125 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/962${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
+const form = document.querySelector('form'); // تأكد من تحديد النموذج المناسب
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.querySelector('#customer-name').value,
+        phone: document.querySelector('#customer-phone').value,
+        area: document.querySelector('#delivery-area').value,
+        delivery_time: document.querySelector('input[name="delivery-time"]:checked').value,
+        location_url: document.querySelector('#customer-location').value,
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbz0TcYqEtHQIbhw17kaj7RCywjLLsIWALu8-uCr9Z-iYNgTyMre6KfMizoxlTubjyyYsQ/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())
+    .then(result => alert('Data saved successfully'))
+    .catch(error => console.error('Error:', error));
+});
+// اجلب زر تخزين البيانات
+const storeDataButton = document.querySelector('#store-data-button');
+
+storeDataButton.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.querySelector('#customer-name').value,
+        phone: document.querySelector('#customer-phone').value,
+        area: document.querySelector('#delivery-area').value,
+        delivery_time: document.querySelector('input[name="delivery-time"]:checked').value,
+        location_url: document.querySelector('#customer-location').value,
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbz0TcYqEtHQIbhw17kaj7RCywjLLsIWALu8-uCr9Z-iYNgTyMre6KfMizoxlTubjyyYsQ/exec', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.text())
+.then(result => alert('تم تخزين البيانات بنجاح'))
+.catch(error => console.error('خطأ:', error));
+
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const storeDataButton = document.querySelector('#store-data-button');
+storeDataButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('Store Data button clicked');
+});
+
+        e.preventDefault();
+
+        const data = {
+            name: document.querySelector('#customer-name').value,
+            phone: document.querySelector('#customer-phone').value,
+            area: document.querySelector('#delivery-area').value,
+            delivery_time: document.querySelector('input[name="delivery-time"]:checked').value,
+            location_url: document.querySelector('#customer-location').value,
+        };
+
+        fetch('https://script.google.com/macros/s/AKfycbz0TcYqEtHQIbhw17kaj7RCywjLLsIWALu8-uCr9Z-iYNgTyMre6KfMizoxlTubjyyYsQ/exec', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.text())
+        .then(result => alert('تم تخزين البيانات بنجاح'))
+        .catch(error => console.error('خطأ:', error));
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const nameField = document.querySelector('#customer-name');
+        const phoneField = document.querySelector('#customer-phone');
+        const areaField = document.querySelector('#delivery-area');
+        const deliveryTimeField = document.querySelector('input[name="delivery-time"]:checked');
+        const locationField = document.querySelector('#customer-location');
+    
+        console.log('Name Field:', nameField);
+        console.log('Phone Field:', phoneField);
+        console.log('Area Field:', areaField);
+        console.log('Delivery Time Field:', deliveryTimeField);
+        console.log('Location Field:', locationField);
+    
+        if (!nameField || !phoneField || !areaField || !deliveryTimeField || !locationField) {
+            alert('One or more elements are missing');
+            return;
+        }
+    
+        const storeDataButton = document.querySelector('#store-data-button');
+        storeDataButton.addEventListener('click', function(e) {
+            e.preventDefault();
+    
+            const data = {
+                name: nameField.value,
+                phone: phoneField.value,
+                area: areaField.value,
+                delivery_time: deliveryTimeField.value,
+                location_url: locationField.value,
+            };
+    
+            fetch('https://script.google.com/macros/s/AKfycbz0TcYqEtHQIbhw17kaj7RCywjLLsIWALu8-uCr9Z-iYNgTyMre6KfMizoxlTubjyyYsQ/exec', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(result => alert('تم تخزين البيانات بنجاح'))
+            .catch(error => console.error('خطأ:', error));
+        });
+    });
+    
+
+

@@ -54,7 +54,7 @@
 <div class="form-container">
     <form id="orderForm">
         <label for="customerName">اسم العميل</label>
-        <input type="text" id="customerName" name="customerName" required>
+        <input type="text" id="customer-name">
 
         <label for="customerPhone">رقم هاتف العميل</label>
         <input type="text" id="customerPhone" name="customerPhone" required>
@@ -73,7 +73,7 @@
         <input type="url" id="customerLocation" name="customerLocation" required>
 
         <div class="button-container">
-            <button type="button" onclick="copyInfo()">نسخ المعلومات</button>
+            <button id="store-data-button">تخزين البيانات</button>
             <button type="button" onclick="printOrder()">طباعة</button>
             <button type="button" onclick="sendToWhatsApp()">ارسال الى واتساب</button>
         </div>
